@@ -17,7 +17,6 @@ class HomePage extends StatefulWidget {
 class HomePageState extends State<HomePage> {
   int _selectedIndex = 0;
 
-  // List of pages for each bottom navigation item
   final List<Widget> _pages = [
     MainScreen(),
     CocktailsScreen(),
@@ -26,7 +25,6 @@ class HomePageState extends State<HomePage> {
     WishlistScreen(),
   ];
 
-  // Handle the index change
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
@@ -36,14 +34,13 @@ class HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Home Page with Bottom Navigation')),
       body: _pages[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: AppColor.backgroudColorApp,
         selectedItemColor: AppColor.mainBlue,
         unselectedItemColor: AppColor.grey,
         type: BottomNavigationBarType.fixed,
-        elevation: 0.0,
+
         currentIndex: _selectedIndex,
         onTap: _onItemTapped,
         items: <BottomNavigationBarItem>[

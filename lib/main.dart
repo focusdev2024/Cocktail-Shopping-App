@@ -18,7 +18,7 @@ class _CocktailCosmoState extends State<CocktailCosmo> {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      //debugShowCheckedModeBanner: false,
+      debugShowCheckedModeBanner: false,
       getPages: RouteHelper.routes,
       onGenerateRoute: (RouteSettings settings) {
         return MaterialPageRoute<void>(
