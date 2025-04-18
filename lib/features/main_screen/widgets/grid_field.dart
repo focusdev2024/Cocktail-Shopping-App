@@ -38,6 +38,7 @@ class ResponsiveGrid extends StatelessWidget {
           padding: const EdgeInsets.all(16),
           shrinkWrap: true,
           itemCount: 4,
+          physics: NeverScrollableScrollPhysics(),
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: crossAxisCount,
             crossAxisSpacing: 16,

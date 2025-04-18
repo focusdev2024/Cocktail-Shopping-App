@@ -5,9 +5,11 @@ import 'package:cocktail_cosmo_design/core/widgets/main_small_text.dart';
 import 'package:cocktail_cosmo_design/features/main_screen/widgets/app_drawer.dart';
 import 'package:cocktail_cosmo_design/features/main_screen/widgets/appbar_widget.dart';
 import 'package:cocktail_cosmo_design/features/main_screen/widgets/background_image.dart';
+import 'package:cocktail_cosmo_design/features/main_screen/widgets/cocktails_menu.dart';
 import 'package:cocktail_cosmo_design/features/main_screen/widgets/gradient_color.dart';
 import 'package:cocktail_cosmo_design/features/main_screen/widgets/grid_field.dart';
 import 'package:cocktail_cosmo_design/features/main_screen/widgets/search_field.dart';
+import 'package:cocktail_cosmo_design/features/main_screen/widgets/your_cocktail_menutext.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -116,6 +118,10 @@ class _MainScreenState extends State<MainScreen> {
           ),
           SliverToBoxAdapter(child: SizedBox(height: 60)),
           SliverToBoxAdapter(child: ResponsiveGrid()),
+          SliverToBoxAdapter(child: SizedBox(height: 40)),
+          SliverToBoxAdapter(child: YourCocktailMenuText()),
+          SliverToBoxAdapter(child: SizedBox(height: 40)),
+          SliverToBoxAdapter(child: HorizontalCardList()),
         ],
       ),
     );

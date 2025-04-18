@@ -27,7 +27,7 @@ class AppTextFieldWidget extends StatelessWidget {
           border: InputBorder.none,
         ),
         inputFormatters: [
-          FilteringTextInputFormatter.allow(RegExp(r'[a-zA-Zа-яА-Я]')),
+          FilteringTextInputFormatter.allow(RegExp(r'[a-zA-Zа-яА-ЯёЁ\s]')),
           LengthLimitingTextInputFormatter(50),
         ],
         style: const TextStyle(fontSize: 16),
