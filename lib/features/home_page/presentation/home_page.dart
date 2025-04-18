@@ -38,7 +38,7 @@ class HomePageState extends State<HomePage> {
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: AppColor.backgroudColorApp,
         selectedItemColor: AppColor.mainBlue,
-        unselectedItemColor: AppColor.grey,
+        unselectedItemColor: AppColor.black,
         type: BottomNavigationBarType.fixed,
 
         currentIndex: _selectedIndex,
@@ -47,35 +47,35 @@ class HomePageState extends State<HomePage> {
           BottomNavigationBarItem(
             icon: Image.asset(
               AppIcons.mainIcon,
-              color: _selectedIndex == 0 ? AppColor.mainBlue : AppColor.grey,
+              color: _selectedIndex == 0 ? AppColor.mainBlue : AppColor.black,
             ),
             label: 'Main',
           ),
           BottomNavigationBarItem(
             icon: Image.asset(
               AppIcons.cocktailIcon,
-              color: _selectedIndex == 1 ? AppColor.mainBlue : AppColor.grey,
+              color: _selectedIndex == 1 ? AppColor.mainBlue : AppColor.black,
             ),
             label: 'Cocktails',
           ),
           BottomNavigationBarItem(
             icon: Image.asset(
               AppIcons.ingredietIcon,
-              color: _selectedIndex == 2 ? AppColor.mainBlue : AppColor.grey,
+              color: _selectedIndex == 2 ? AppColor.mainBlue : AppColor.black,
             ),
             label: 'Ingredients',
           ),
           BottomNavigationBarItem(
             icon: Image.asset(
               AppIcons.bookIcon,
-              color: _selectedIndex == 3 ? AppColor.mainBlue : AppColor.grey,
+              color: _selectedIndex == 3 ? AppColor.mainBlue : AppColor.black,
             ),
             label: 'Book',
           ),
           BottomNavigationBarItem(
             icon: Image.asset(
               AppIcons.wishIcon,
-              color: _selectedIndex == 4 ? AppColor.mainBlue : AppColor.grey,
+              color: _selectedIndex == 4 ? AppColor.mainBlue : AppColor.black,
             ),
             label: 'Wish-list',
           ),

@@ -2,6 +2,7 @@ import 'package:cocktail_cosmo_design/config/routes/route_helper.dart';
 import 'package:cocktail_cosmo_design/features/error_page/presentation/error_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 Future<void> main() async {
   runApp(CocktailCosmo());
@@ -19,6 +20,8 @@ class _CocktailCosmoState extends State<CocktailCosmo> {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      supportedLocales: AppLocalizations.supportedLocales,
       getPages: RouteHelper.routes,
       onGenerateRoute: (RouteSettings settings) {
         return MaterialPageRoute<void>(
