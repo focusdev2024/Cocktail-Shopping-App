@@ -44,6 +44,7 @@ class HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      //backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       body: _pages[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
         elevation: 0,

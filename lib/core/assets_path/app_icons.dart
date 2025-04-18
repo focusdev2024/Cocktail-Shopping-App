@@ -6,4 +6,6 @@ class AppIcons {
   static final String ingredietIcon = '${iconPath}ingrediet.png';
   static final String bookIcon = '${iconPath}book.png';
   static final String wishIcon = '${iconPath}wish.png';
+  static final String searchIcon = '${iconPath}search.png';
+  static final String menuIcon = '${iconPath}menu.png';
 }

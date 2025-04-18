@@ -12,6 +12,11 @@ class AppThemes {
       selectedItemColor: AppColor.mainBlue,
       unselectedItemColor: AppColor.black,
       type: BottomNavigationBarType.fixed,
-    ), // Add shadow color here
+    ),
+    //main page gradient color
+    canvasColor: AppColor.black,
+    cardColor: AppColor.backgroudColorApp,
+    disabledColor: AppColor.grey,
+    focusColor: AppColor.mainYellow,
   );
 }

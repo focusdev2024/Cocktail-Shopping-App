@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 
-class MainSmallTextWidget extends StatelessWidget {
+class ContentSmallTextWidget extends StatelessWidget {
   final String text;
-  const MainSmallTextWidget({super.key, required this.text});
+  const ContentSmallTextWidget({super.key, required this.text});
 
   @override
   Widget build(BuildContext context) {
     return Text(
       text,
       style: TextStyle(
-        color: Theme.of(context).cardColor,
+        color: Theme.of(context).canvasColor,
         fontFamily: 'Inter',
         fontSize: 16,
         fontWeight: FontWeight.w500,

@@ -7,5 +7,9 @@
   "cocktails": "Cocktails",
   "ingredients": "Ingredients",
   "book": "Book",
-  "wishlist": "Wish-list"
+  "wishlist": "Wish-list",
+  "findCocktail": "Find Cocktail",
+  "findRecipe": "Find a recipe by ingredient",
+  "search": "Search"
+
 }

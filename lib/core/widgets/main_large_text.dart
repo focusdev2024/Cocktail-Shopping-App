@@ -10,7 +10,7 @@ class MainLargeTextWidget extends StatelessWidget {
       text,
 
       style: TextStyle(
-        color: Colors.white,
+        color: Theme.of(context).cardColor,
         fontFamily: 'Playfair',
         fontSize: 40,
         fontWeight: FontWeight.bold,
