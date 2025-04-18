@@ -8,4 +8,9 @@ class AppIcons {
   static final String wishIcon = '${iconPath}wish.png';
   static final String searchIcon = '${iconPath}search.png';
   static final String menuIcon = '${iconPath}menu.png';
+  static final String closeIcon = '${iconPath}close.png';
+  static final String cameraIcon = '${iconPath}camera.png';
+  static final String listIcon = '${iconPath}list.png';
+  static final String homeIcon = '${iconPath}home.png';
+  static final String medalIcon = '${iconPath}medal.png';
 }

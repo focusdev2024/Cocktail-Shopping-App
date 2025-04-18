@@ -8,7 +8,7 @@ class GradientColorWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: AppDimensions.screenWidth(context),
-      height: AppDimensions.setHeight(context, 1.0),
+      height: AppDimensions.setHeight(context, 0.95),
       decoration: BoxDecoration(
         gradient: LinearGradient(
           begin: Alignment.topCenter,

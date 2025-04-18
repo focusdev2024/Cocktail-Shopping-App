@@ -2,17 +2,15 @@ import 'package:cocktail_cosmo_design/core/assets_path/app_icons.dart';
 import 'package:cocktail_cosmo_design/core/assets_path/app_images.dart';
 import 'package:cocktail_cosmo_design/core/constants/app_dimension.dart';
 import 'package:cocktail_cosmo_design/core/widgets/content_small_text.dart';
-import 'package:cocktail_cosmo_design/core/widgets/main_small_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class AppBarWidget extends StatelessWidget {
-  final String findCocktail;
   final String openDrawerIcon;
   final VoidCallback onOpenDrawer;
 
   const AppBarWidget({
     super.key,
-    required this.findCocktail,
     required this.openDrawerIcon,
     required this.onOpenDrawer,
   });
@@ -46,7 +44,9 @@ class AppBarWidget extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      ContentSmallTextWidget(text: findCocktail),
+                      ContentSmallTextWidget(
+                        text: AppLocalizations.of(context)!.findCocktail,
+                      ),
                       Image.asset(
                         AppIcons.searchIcon,
                         color: Theme.of(context).canvasColor,
@@ -57,9 +57,13 @@ class AppBarWidget extends StatelessWidget {
               ),
               GestureDetector(
                 onTap: onOpenDrawer,
-                child: Image.asset(
-                  openDrawerIcon,
-                  color: Theme.of(context).cardColor,
+                child: SizedBox(
+                  width: AppDimensions.setWidth(context, 0.1),
+                  child: Image.asset(
+                    openDrawerIcon,
+                    color: Theme.of(context).cardColor,
+                    height: 24,
+                  ),
                 ),
               ),
             ],

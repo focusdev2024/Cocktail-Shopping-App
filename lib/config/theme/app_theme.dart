@@ -18,5 +18,6 @@ class AppThemes {
     cardColor: AppColor.backgroudColorApp,
     disabledColor: AppColor.grey,
     focusColor: AppColor.mainYellow,
+    drawerTheme: DrawerThemeData(backgroundColor: AppColor.backgroudColorApp),
   );
 }
