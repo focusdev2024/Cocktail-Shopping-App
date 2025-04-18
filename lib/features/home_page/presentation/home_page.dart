@@ -1,11 +1,11 @@
 import 'package:cocktail_cosmo_design/core/assets_path/app_icons.dart';
-import 'package:cocktail_cosmo_design/core/constants/app_color.dart';
 import 'package:cocktail_cosmo_design/features/book_screen/presentation/book_screen.dart';
 import 'package:cocktail_cosmo_design/features/cocktails_screen/presentation/cocktails_screen.dart';
 import 'package:cocktail_cosmo_design/features/ingredients_screen/presentation/ingredients_screen.dart';
-import 'package:cocktail_cosmo_design/features/main_screen/presentation/home_screen.dart';
+import 'package:cocktail_cosmo_design/features/main_screen/presentation/main_screen.dart';
 import 'package:cocktail_cosmo_design/features/wishlist_screen/presentation/wishlist_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -31,53 +31,49 @@ class HomePageState extends State<HomePage> {
     });
   }
 
+  Widget buildNavIcon(String iconPath, int index) {
+    final theme = Theme.of(context).bottomNavigationBarTheme;
+    final color =
+        _selectedIndex == index
+            ? theme.selectedItemColor
+            : theme.unselectedItemColor;
+
+    return Image.asset(iconPath, color: color);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: _pages[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: AppColor.backgroudColorApp,
-        selectedItemColor: AppColor.mainBlue,
-        unselectedItemColor: AppColor.black,
-        type: BottomNavigationBarType.fixed,
-
+        elevation: 0,
         currentIndex: _selectedIndex,
         onTap: _onItemTapped,
+        type: BottomNavigationBarType.fixed,
+        selectedItemColor:
+            Theme.of(context).bottomNavigationBarTheme.selectedItemColor,
+        unselectedItemColor:
+            Theme.of(context).bottomNavigationBarTheme.unselectedItemColor,
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Image.asset(
-              AppIcons.mainIcon,
-              color: _selectedIndex == 0 ? AppColor.mainBlue : AppColor.black,
-            ),
-            label: 'Main',
+            icon: buildNavIcon(AppIcons.mainIcon, 0),
+            label: AppLocalizations.of(context)!.main,
           ),
           BottomNavigationBarItem(
-            icon: Image.asset(
-              AppIcons.cocktailIcon,
-              color: _selectedIndex == 1 ? AppColor.mainBlue : AppColor.black,
-            ),
-            label: 'Cocktails',
+            icon: buildNavIcon(AppIcons.cocktailIcon, 1),
+            label: AppLocalizations.of(context)!.cocktails,
           ),
           BottomNavigationBarItem(
-            icon: Image.asset(
-              AppIcons.ingredietIcon,
-              color: _selectedIndex == 2 ? AppColor.mainBlue : AppColor.black,
-            ),
-            label: 'Ingredients',
+            icon: buildNavIcon(AppIcons.ingredietIcon, 2),
+            label: AppLocalizations.of(context)!.ingredients,
           ),
           BottomNavigationBarItem(
-            icon: Image.asset(
-              AppIcons.bookIcon,
-              color: _selectedIndex == 3 ? AppColor.mainBlue : AppColor.black,
-            ),
-            label: 'Book',
+            icon: buildNavIcon(AppIcons.bookIcon, 3),
+            label: AppLocalizations.of(context)!.book,
           ),
           BottomNavigationBarItem(
-            icon: Image.asset(
-              AppIcons.wishIcon,
-              color: _selectedIndex == 4 ? AppColor.mainBlue : AppColor.black,
-            ),
-            label: 'Wish-list',
+            icon: buildNavIcon(AppIcons.wishIcon, 4),
+            label: AppLocalizations.of(context)!.wishlist,
           ),
         ],
       ),

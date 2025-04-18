@@ -17,7 +17,6 @@ class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColor.backgroudColorApp,
       body: CustomScrollView(
         slivers: <Widget>[
           SliverToBoxAdapter(
