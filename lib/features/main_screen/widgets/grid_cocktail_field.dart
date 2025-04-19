@@ -34,8 +34,13 @@ class ResponsiveGrid extends StatelessWidget {
     return LayoutBuilder(
       builder: (context, constraints) {
         int crossAxisCount = constraints.maxWidth > 600 ? 4 : 2;
+        final screenWidth = MediaQuery.of(context).size.width;
+        final itemWidth =
+            (screenWidth - (crossAxisCount - 1) * 16) / crossAxisCount;
+        final itemHeight = itemWidth / 0.9;
+        final aspectRatio = itemWidth / itemHeight;
         return GridView.builder(
-          padding: const EdgeInsets.all(16),
+          padding: const EdgeInsets.symmetric(horizontal: 16.0),
           shrinkWrap: true,
           itemCount: 4,
           physics: NeverScrollableScrollPhysics(),
@@ -43,7 +48,7 @@ class ResponsiveGrid extends StatelessWidget {
             crossAxisCount: crossAxisCount,
             crossAxisSpacing: 16,
             mainAxisSpacing: 16,
-            childAspectRatio: 0.9,
+            childAspectRatio: aspectRatio,
           ),
           itemBuilder: (context, index) {
             final item = recipes[index];

@@ -13,4 +13,6 @@ class AppIcons {
   static final String listIcon = '${iconPath}list.png';
   static final String homeIcon = '${iconPath}home.png';
   static final String medalIcon = '${iconPath}medal.png';
+  static final String thumbupIcon = '${iconPath}thumbup.png';
+  static final String starIcon = '${iconPath}star.png';
 }

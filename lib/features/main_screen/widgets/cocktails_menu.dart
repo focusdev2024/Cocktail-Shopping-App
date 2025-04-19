@@ -1,3 +1,5 @@
+import 'package:cocktail_cosmo_design/core/assets_path/app_icons.dart';
+import 'package:cocktail_cosmo_design/core/widgets/container_text.dart';
 import 'package:flutter/material.dart';
 
 class HorizontalCardList extends StatefulWidget {
@@ -32,6 +34,21 @@ class _HorizontalCardListState extends State<HorizontalCardList> {
     },
   ];
 
+  bool _starClick = false;
+  //bool _thumbup = false;
+
+  void _toggleStarClick() {
+    setState(() {
+      _starClick = !_starClick;
+    });
+  }
+
+  // void _toggleThumbupClick() {
+  //   setState(() {
+  //     _thumbup = !_thumbup;
+  //   });
+  // }
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -55,11 +72,11 @@ class _HorizontalCardListState extends State<HorizontalCardList> {
                 ),
                 child: Container(
                   decoration: BoxDecoration(
-                    color: Colors.white,
                     borderRadius: BorderRadius.circular(18),
                     boxShadow: [
                       BoxShadow(
-                        color: Colors.black12,
+                        // ignore: deprecated_member_use
+                        color: Theme.of(context).disabledColor.withOpacity(0.2),
                         blurRadius: 10,
                         spreadRadius: 2,
                       ),
@@ -78,7 +95,7 @@ class _HorizontalCardListState extends State<HorizontalCardList> {
                             item['image'],
                             height: 180,
                             width: double.infinity,
-                            fit: BoxFit.cover,
+                            fit: BoxFit.fill,
                           ),
                         ),
                       ),
@@ -87,7 +104,7 @@ class _HorizontalCardListState extends State<HorizontalCardList> {
                         child: Container(
                           padding: const EdgeInsets.all(12),
                           decoration: BoxDecoration(
-                            color: Colors.blue,
+                            color: Theme.of(context).primaryColor,
                             borderRadius: const BorderRadius.only(
                               bottomLeft: Radius.circular(18),
                               bottomRight: Radius.circular(18),
@@ -98,14 +115,9 @@ class _HorizontalCardListState extends State<HorizontalCardList> {
                             children: [
                               Expanded(
                                 flex: 2,
-                                child: Text(
-                                  item['title'],
-                                  style: const TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.white,
-                                  ),
-                                  maxLines: 2,
-                                  overflow: TextOverflow.ellipsis,
+                                child: ContainerTextWidget(
+                                  item: item['title'],
+                                  color: null,
                                 ),
                               ),
                               const SizedBox(height: 10),
@@ -117,33 +129,49 @@ class _HorizontalCardListState extends State<HorizontalCardList> {
                                   children: [
                                     Row(
                                       children: [
-                                        const Icon(
-                                          Icons.thumb_up,
-                                          color: Colors.white,
-                                          size: 18,
+                                        GestureDetector(
+                                          onTap: () {}, // _toggleThumbupClick,
+                                          child: Image.asset(
+                                            AppIcons.thumbupIcon,
+                                            color: Theme.of(context).cardColor,
+                                            // _thumbup
+                                            //     ? Theme.of(
+                                            //       context,
+                                            //     ).focusColor
+                                            //     : Theme.of(
+                                            //       context,
+                                            //     ).cardColor,
+                                            width: 18,
+                                          ),
                                         ),
                                         const SizedBox(width: 6),
-                                        Text(
-                                          '${item['likes']}',
-                                          style: const TextStyle(
-                                            color: Colors.white,
-                                          ),
+                                        ContainerTextWidget(
+                                          item: '${item['likes']}',
+                                          color: null,
                                         ),
                                       ],
                                     ),
                                     Row(
                                       children: [
-                                        const Icon(
-                                          Icons.star,
-                                          color: Colors.yellow,
-                                          size: 20,
+                                        GestureDetector(
+                                          onTap: _toggleStarClick,
+                                          child: Image.asset(
+                                            AppIcons.starIcon,
+                                            color:
+                                                _starClick
+                                                    ? Theme.of(
+                                                      context,
+                                                    ).focusColor
+                                                    : Theme.of(
+                                                      context,
+                                                    ).cardColor,
+                                            width: 18,
+                                          ),
                                         ),
                                         const SizedBox(width: 6),
-                                        Text(
-                                          '${item['rating']}',
-                                          style: const TextStyle(
-                                            color: Colors.white,
-                                          ),
+                                        ContainerTextWidget(
+                                          item: '${item['rating']}',
+                                          color: null,
                                         ),
                                       ],
                                     ),
@@ -177,8 +205,9 @@ class _HorizontalCardListState extends State<HorizontalCardList> {
               decoration: BoxDecoration(
                 color:
                     _currentIndex == index
-                        ? Colors.blue
-                        : Colors.grey.withOpacity(0.4),
+                        ? Theme.of(context).focusColor
+                        // ignore: deprecated_member_use
+                        : Theme.of(context).primaryColor.withOpacity(0.8),
                 borderRadius: BorderRadius.circular(3),
               ),
             ),

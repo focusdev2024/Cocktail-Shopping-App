@@ -13,6 +13,7 @@ class AppThemes {
       unselectedItemColor: AppColor.black,
       type: BottomNavigationBarType.fixed,
     ),
+
     //main page gradient color
     canvasColor: AppColor.black,
     cardColor: AppColor.backgroudColorApp,

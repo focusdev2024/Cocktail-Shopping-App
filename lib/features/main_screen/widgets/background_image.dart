@@ -10,7 +10,7 @@ class BackGroundImage extends StatelessWidget {
     return SizedBox(
       width: AppDimensions.screenWidth(context),
       height: AppDimensions.setHeight(context, 0.95),
-      child: Image.asset(AppImages.backgroundImage, fit: BoxFit.cover),
+      child: Image.asset(AppImages.backgroundImage, fit: BoxFit.fill),
     );
   }
 }
