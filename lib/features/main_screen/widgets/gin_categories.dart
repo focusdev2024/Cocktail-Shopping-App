@@ -82,29 +82,32 @@ class CategoryCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(16),
-        image: DecorationImage(image: AssetImage(imagePath), fit: BoxFit.cover),
-      ),
-      child: Align(
-        alignment: Alignment.bottomCenter,
-        child: Container(
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Container(
+          height: 150,
           width: 200,
-          margin: const EdgeInsets.all(8),
-          padding: const EdgeInsets.symmetric(horizontal: 22, vertical: 10),
-
           decoration: BoxDecoration(
-            // ignore: deprecated_member_use
-            color: Theme.of(context).cardColor.withOpacity(0.9),
-            borderRadius: BorderRadius.circular(12),
-          ),
-          child: ContainerTextWidget(
-            item: title,
-            color: Theme.of(context).canvasColor,
+            borderRadius: BorderRadius.circular(30),
+            shape: BoxShape.rectangle,
+            image: DecorationImage(
+              image: AssetImage(imagePath),
+              fit: BoxFit.fill,
+            ),
           ),
         ),
-      ),
+        SizedBox(height: 5),
+        Row(
+          children: [
+            ContainerTextWidget(
+              item: title,
+              color: Theme.of(context).canvasColor,
+            ),
+            Container(decoration: BoxDecoration(shape: BoxShape.circle)),
+          ],
+        ),
+      ],
     );
   }
 }

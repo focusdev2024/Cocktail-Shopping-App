@@ -21,7 +21,7 @@ class YourCocktailMenuText extends StatelessWidget {
           MainSmallTextWidget(
             text:
                 'Every day is different—just like every cocktail should be! Discover a fresh selection of gin-based delights curated just for you.',
-            colorDark: false,
+            colorDark: true,
             fontSize: 14,
             textAlign: TextAlign.center,
           ),

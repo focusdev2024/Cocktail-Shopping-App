@@ -22,7 +22,7 @@ class MainLargeTextWidget extends StatelessWidget {
         color:
             (colorDark ?? true)
                 ? Theme.of(context).cardColor
-                : Theme.of(context).canvasColor,
+                : Theme.of(context).primaryColor,
         fontFamily: 'Playfair',
         fontSize: fontSize,
         fontWeight: FontWeight.bold,
