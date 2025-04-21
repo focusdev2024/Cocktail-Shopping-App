@@ -130,9 +130,13 @@ class _CocktailsScreenState extends State<CocktailsScreen> {
             child: AdBanner(addBannerImagePath: addBannerImagePath),
           ),
           SliverToBoxAdapter(
-            child: SizedBox(height: AppDimensions.setHeight(context, 0.01)),
+            child: SizedBox(height: AppDimensions.setHeight(context, 0.05)),
           ),
           SliverToBoxAdapter(child: SelectedForYouText()),
+          SliverToBoxAdapter(
+            child: SizedBox(height: AppDimensions.setHeight(context, 0.02)),
+          ),
+          SliverToBoxAdapter(child: DrinksGridWidget(recipes: drinks)),
         ],
       ),
     );
