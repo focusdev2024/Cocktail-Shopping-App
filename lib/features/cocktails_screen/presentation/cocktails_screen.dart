@@ -1,13 +1,14 @@
 import 'package:cocktail_cosmo_design/core/assets_path/app_icons.dart';
 import 'package:cocktail_cosmo_design/core/constants/app_dimension.dart';
+import 'package:cocktail_cosmo_design/core/widgets/search_widget.dart';
+import 'package:cocktail_cosmo_design/features/cocktails_screen/presentation/cocktail_drawer_screen.dart';
 import 'package:cocktail_cosmo_design/features/cocktails_screen/widgets/ad_banner_widget.dart';
 import 'package:cocktail_cosmo_design/features/cocktails_screen/widgets/based_advansed_filter_buttons.dart';
-import 'package:cocktail_cosmo_design/features/cocktails_screen/widgets/cocktail_appbar.dart';
 import 'package:cocktail_cosmo_design/features/cocktails_screen/widgets/cocktail_page_resipies_text.dart';
+import 'package:cocktail_cosmo_design/features/cocktails_screen/widgets/cocltail_appbar_widget.dart';
 import 'package:cocktail_cosmo_design/features/cocktails_screen/widgets/drinks_grid_widget.dart';
 import 'package:cocktail_cosmo_design/features/cocktails_screen/widgets/selected_foryou_text.dart';
 import 'package:cocktail_cosmo_design/features/cocktails_screen/widgets/we_recommend_field.dart';
-import 'package:cocktail_cosmo_design/features/main_screen/widgets/main_field.dart';
 import 'package:flutter/material.dart';
 
 class CocktailsScreen extends StatefulWidget {
@@ -19,17 +20,29 @@ class CocktailsScreen extends StatefulWidget {
 
 class _CocktailsScreenState extends State<CocktailsScreen> {
   final TextEditingController controller = TextEditingController();
+  void _activateSearchButton() {}
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
-  bool _isDrawerOpen = false;
 
   void _openDrawer() {
-    setState(() {
-      _isDrawerOpen = !_isDrawerOpen;
-    });
+    Navigator.push(
+      context,
+      PageRouteBuilder(
+        transitionDuration: const Duration(milliseconds: 400),
+        pageBuilder:
+            (context, animation, secondaryAnimation) => CocktailDrawerScreen(),
+        transitionsBuilder: (context, animation, secondaryAnimation, child) {
+          final offsetAnimation = Tween<Offset>(
+            begin: const Offset(1.0, 0.0),
+            end: Offset.zero,
+          ).animate(animation);
+
+          return SlideTransition(position: offsetAnimation, child: child);
+        },
+      ),
+    );
   }
 
   final String openDrawerIcon = AppIcons.menuIcon;
-  final String closeDrawerIcon = AppIcons.closeIcon;
 
   final List<String> ingredients = [
     "dry vermouth",
@@ -40,16 +53,7 @@ class _CocktailsScreenState extends State<CocktailsScreen> {
     "sugar syrup",
   ];
 
-  void _weRecommendedClick() {
-    // Navigator.push(
-    //   context,
-    //   MaterialPageRoute(
-    //     builder: (context) => IngredientDetailScreen(ingredient: ingredient),
-    //   ),
-    // );
-  }
-
-  void _activateSearchButton() {}
+  void _weRecommendedClick() {}
 
   final List<Map<String, dynamic>> drinks = [
     {
@@ -89,11 +93,9 @@ class _CocktailsScreenState extends State<CocktailsScreen> {
           SliverToBoxAdapter(
             child: Padding(
               padding: const EdgeInsets.only(top: 5.0),
-              child: CocktailAppBar(
-                isDrawerOpen: _isDrawerOpen,
-                openDrawerIcon: openDrawerIcon,
-                closeDrawerIcon: closeDrawerIcon,
+              child: CocktailAppBarWidget(
                 onOpenDrawer: _openDrawer,
+                openDrawerIcon: openDrawerIcon,
               ),
             ),
           ),

@@ -5,12 +5,14 @@ class MainSmallTextWidget extends StatelessWidget {
   final bool? colorDark;
   final double fontSize;
   final TextAlign textAlign;
+  final FontWeight fontWeight;
   const MainSmallTextWidget({
     super.key,
     required this.text,
     this.colorDark,
     this.fontSize = 16,
     this.textAlign = TextAlign.start,
+    this.fontWeight = FontWeight.w500,
   });
 
   @override
@@ -24,7 +26,7 @@ class MainSmallTextWidget extends StatelessWidget {
                 : Theme.of(context).canvasColor,
         fontFamily: 'Inter',
         fontSize: fontSize,
-        fontWeight: FontWeight.w500,
+        fontWeight: fontWeight,
       ),
       maxLines: 4,
       overflow: TextOverflow.ellipsis,

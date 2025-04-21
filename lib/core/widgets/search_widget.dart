@@ -27,7 +27,7 @@ class SearchWidget extends StatelessWidget {
           onPressed: onSearch,
           style: ElevatedButton.styleFrom(
             backgroundColor: Theme.of(context).focusColor,
-            padding: EdgeInsets.symmetric(horizontal: 8.0, vertical: 12.0),
+            padding: EdgeInsets.symmetric(horizontal: 18.0, vertical: 20.0),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.all(Radius.circular(30)),
             ),
