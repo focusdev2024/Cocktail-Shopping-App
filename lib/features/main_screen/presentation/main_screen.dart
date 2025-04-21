@@ -87,11 +87,28 @@ class _MainScreenState extends State<MainScreen> {
     "assets/images/category.png",
     "assets/images/category.png",
   ];
+  final List<String> recipiesTitle = [
+    "58+ Recipes",
+    "72+ Recipes",
+    "85+ Recipes",
+    "90+ Recipes",
+    "63+ Recipes",
+    "77+ Recipes",
+  ];
+
+  void _categoryTap() {
+    // Navigator.push(
+    //   context,
+    //   MaterialPageRoute(
+    //     builder: (_) => const CategoryScreen(),
+    //   ),
+    // );
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+      // backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       key: _scaffoldKey,
       body: CustomScrollView(
         slivers: <Widget>[
@@ -140,6 +157,8 @@ class _MainScreenState extends State<MainScreen> {
             child: GinCategoriesWidget(
               categories: categories,
               categoriesImage: categoriesImage,
+              recipiesTitle: recipiesTitle,
+              onTap: _categoryTap,
             ),
           ),
           SliverToBoxAdapter(

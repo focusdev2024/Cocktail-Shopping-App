@@ -5,16 +5,14 @@ import 'package:cocktail_cosmo_design/core/widgets/content_small_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class AppBarWidget extends StatelessWidget {
+class CocktailAppBarWidget extends StatelessWidget {
   final String openDrawerIcon;
   final VoidCallback onOpenDrawer;
-  final bool? appTransparest;
 
-  const AppBarWidget({
+  const CocktailAppBarWidget({
     super.key,
     required this.openDrawerIcon,
     required this.onOpenDrawer,
-    this.appTransparest = true,
   });
 
   @override
@@ -33,10 +31,7 @@ class AppBarWidget extends StatelessWidget {
             children: [
               Image.asset(
                 AppImages.logo,
-                color:
-                    appTransparest == true
-                        ? Theme.of(context).cardColor
-                        : Theme.of(context).primaryColor,
+                color: Theme.of(context).primaryColor,
               ),
               GestureDetector(
                 onTap: () {},
@@ -47,10 +42,7 @@ class AppBarWidget extends StatelessWidget {
                     vertical: 10.0,
                   ),
                   decoration: BoxDecoration(
-                    color:
-                        appTransparest == true
-                            ? Theme.of(context).cardColor
-                            : Theme.of(context).canvasColor,
+                    color: Theme.of(context).canvasColor,
                     borderRadius: BorderRadius.all(Radius.circular(30)),
                   ),
                   child: Row(
@@ -58,17 +50,11 @@ class AppBarWidget extends StatelessWidget {
                     children: [
                       ContentSmallTextWidget(
                         text: AppLocalizations.of(context)!.findCocktail,
-                        color:
-                            appTransparest == true
-                                ? Theme.of(context).canvasColor
-                                : Theme.of(context).cardColor,
+                        color: Theme.of(context).cardColor,
                       ),
                       Image.asset(
                         AppIcons.searchIcon,
-                        color:
-                            appTransparest == true
-                                ? Theme.of(context).canvasColor
-                                : Theme.of(context).cardColor,
+                        color: Theme.of(context).cardColor,
                       ),
                     ],
                   ),
@@ -80,10 +66,7 @@ class AppBarWidget extends StatelessWidget {
                   width: AppDimensions.setWidth(context, 0.1),
                   child: Image.asset(
                     openDrawerIcon,
-                    color:
-                        appTransparest == true
-                            ? Theme.of(context).cardColor
-                            : Theme.of(context).canvasColor,
+                    color: Theme.of(context).canvasColor,
                     height: 24,
                   ),
                 ),

@@ -1,4 +1,6 @@
+import 'package:cocktail_cosmo_design/core/assets_path/app_icons.dart';
 import 'package:cocktail_cosmo_design/core/constants/app_dimension.dart';
+import 'package:cocktail_cosmo_design/core/widgets/container_grey_small_text.dart';
 import 'package:cocktail_cosmo_design/core/widgets/container_text.dart';
 import 'package:flutter/material.dart';
 
@@ -7,15 +9,20 @@ class GinCategoriesWidget extends StatelessWidget {
     super.key,
     required this.categories,
     required this.categoriesImage,
+    required this.recipiesTitle,
+    this.ontap,
+    required void Function() onTap,
   });
 
   final List<String> categories;
+  final List<String> recipiesTitle;
   final List<String> categoriesImage;
+  final VoidCallback? ontap;
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: AppDimensions.setHeight(context, 0.78),
+      height: AppDimensions.setHeight(context, 0.85),
       child: Column(
         children: [
           Padding(
@@ -26,7 +33,7 @@ class GinCategoriesWidget extends StatelessWidget {
                 final screenWidth = MediaQuery.of(context).size.width;
                 final itemWidth =
                     (screenWidth - (crossAxisCount - 1) * 16) / crossAxisCount;
-                final itemHeight = itemWidth / 0.9;
+                final itemHeight = itemWidth / 0.8;
                 final aspectRatio = itemWidth / itemHeight;
                 return GridView.builder(
                   padding: const EdgeInsets.symmetric(horizontal: 16.0),
@@ -40,9 +47,14 @@ class GinCategoriesWidget extends StatelessWidget {
                     childAspectRatio: aspectRatio,
                   ),
                   itemBuilder: (context, index) {
-                    return CategoryCard(
-                      title: categories[index],
-                      imagePath: categoriesImage[index],
+                    return GestureDetector(
+                      onTap: ontap,
+                      child: CategoryCard(
+                        title: categories[index],
+                        imagePath: categoriesImage[index],
+                        recipiesTitle: recipiesTitle[index],
+                        onTap: ontap,
+                      ),
                     );
                   },
                 );
@@ -77,8 +89,16 @@ class GinCategoriesWidget extends StatelessWidget {
 
 class CategoryCard extends StatelessWidget {
   final String title;
+  final String recipiesTitle;
   final String imagePath;
-  const CategoryCard({super.key, required this.title, required this.imagePath});
+  final VoidCallback? onTap;
+  const CategoryCard({
+    super.key,
+    required this.title,
+    required this.imagePath,
+    required this.recipiesTitle,
+    this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -99,14 +119,42 @@ class CategoryCard extends StatelessWidget {
         ),
         SizedBox(height: 5),
         Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            ContainerTextWidget(
-              item: title,
-              color: Theme.of(context).canvasColor,
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                ContainerTextWidget(
+                  item: title,
+                  color: Theme.of(context).canvasColor,
+                ),
+                SizedBox(height: 10),
+                ContainerGreySmallTextWidget(
+                  item: recipiesTitle,
+                  color: Theme.of(context).disabledColor,
+                ),
+              ],
             ),
-            Container(decoration: BoxDecoration(shape: BoxShape.circle)),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                GestureDetector(
+                  onTap: onTap,
+                  child: Container(
+                    width: 40,
+                    height: 40,
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).focusColor,
+                      shape: BoxShape.circle,
+                    ),
+                    child: Image.asset(AppIcons.nextIcon),
+                  ),
+                ),
+              ],
+            ),
           ],
         ),
+        SizedBox(height: 5),
       ],
     );
   }

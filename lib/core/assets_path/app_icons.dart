@@ -15,4 +15,5 @@ class AppIcons {
   static final String medalIcon = '${iconPath}medal.png';
   static final String thumbupIcon = '${iconPath}thumbup.png';
   static final String starIcon = '${iconPath}star.png';
+  static final String nextIcon = '${iconPath}next.png';
 }
