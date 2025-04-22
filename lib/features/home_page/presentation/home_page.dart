@@ -6,6 +6,7 @@ import 'package:cocktail_cosmo_design/features/main_screen/presentation/main_scr
 import 'package:cocktail_cosmo_design/features/wishlist_screen/presentation/wishlist_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_svg/svg.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -38,7 +39,8 @@ class HomePageState extends State<HomePage> {
             ? theme.selectedItemColor
             : theme.unselectedItemColor;
 
-    return Image.asset(iconPath, color: color);
+    // ignore: deprecated_member_use
+    return SvgPicture.asset(iconPath, color: color);
   }
 
   @override

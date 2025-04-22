@@ -44,6 +44,8 @@ dependencies:
   adaptive_theme: ^3.7.0
   #custom dotted line divider
   dotted_line: ^3.2.3
+  #for svg images/icons
+  flutter_svg: ^2.1.0
 
 dev_dependencies:
   flutter_test:

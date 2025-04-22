@@ -2,8 +2,8 @@ import 'package:cocktail_cosmo_design/core/widgets/content_small_text.dart';
 import 'package:cocktail_cosmo_design/core/widgets/main_medium_text.dart';
 import 'package:flutter/material.dart';
 
-class RecommendedCocktailsWidget extends StatelessWidget {
-  const RecommendedCocktailsWidget({
+class RecommendedIngredientsWidget extends StatelessWidget {
+  const RecommendedIngredientsWidget({
     super.key,
     required this.ingredients,
     this.weRecommendedClick,

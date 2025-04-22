@@ -1,11 +1,11 @@
 final String iconPath = 'assets/icons/';
 
 class AppIcons {
-  static final String mainIcon = '${iconPath}main.png';
-  static final String cocktailIcon = '${iconPath}cocktail.png';
-  static final String ingredietIcon = '${iconPath}ingrediet.png';
-  static final String bookIcon = '${iconPath}book.png';
-  static final String wishIcon = '${iconPath}wish.png';
+  static final String mainIcon = '${iconPath}main.svg';
+  static final String cocktailIcon = '${iconPath}cocktail.svg';
+  static final String ingredietIcon = '${iconPath}ingrediet.svg';
+  static final String bookIcon = '${iconPath}book.svg';
+  static final String wishIcon = '${iconPath}wish.svg';
   static final String searchIcon = '${iconPath}search.png';
   static final String menuIcon = '${iconPath}menu.png';
   static final String closeIcon = '${iconPath}close.png';

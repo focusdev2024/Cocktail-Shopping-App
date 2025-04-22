@@ -8,39 +8,62 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 class SearchWidget extends StatelessWidget {
   final TextEditingController controller;
   final VoidCallback onSearch;
+  final bool? ingredientsScreen;
 
   const SearchWidget({
     super.key,
     required this.controller,
     required this.onSearch,
+    this.ingredientsScreen,
   });
 
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        AppTextFieldWidget(controller: controller),
-        SizedBox(width: 10),
-        // search button
-        ElevatedButton(
-          onPressed: onSearch,
-          style: ElevatedButton.styleFrom(
-            backgroundColor: Theme.of(context).focusColor,
-            padding: EdgeInsets.symmetric(horizontal: 18.0, vertical: 20.0),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.all(Radius.circular(30)),
-            ),
-            minimumSize: Size(
-              AppDimensions.setWidth(context, 0.2),
-              0,
-            ), // preserve width
-            alignment: Alignment.center,
-          ),
-          child: ContentSmallTextWidget(
-            text: AppLocalizations.of(context)!.search,
-          ),
+        AppTextFieldWidget(
+          controller: controller,
+          ingredientsScreen: ingredientsScreen,
         ),
+        SizedBox(width: 20),
+        // search button
+        ingredientsScreen == true
+            ? Container(
+              width: 50,
+              height: 50,
+              alignment: Alignment.center,
+              decoration: BoxDecoration(
+                color: Theme.of(context).primaryColor,
+                shape: BoxShape.circle,
+              ),
+              child: IconButton(
+                onPressed: onSearch,
+                icon: Icon(
+                  Icons.filter_list_rounded,
+                  color: Theme.of(context).cardColor,
+                  size: 30,
+                ),
+              ),
+            )
+            : ElevatedButton(
+              onPressed: onSearch,
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Theme.of(context).focusColor,
+                padding: EdgeInsets.symmetric(horizontal: 18.0, vertical: 20.0),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(30)),
+                ),
+                minimumSize: Size(
+                  AppDimensions.setWidth(context, 0.2),
+                  0,
+                ), // preserve width
+                alignment: Alignment.center,
+              ),
+              child: ContentSmallTextWidget(
+                text: AppLocalizations.of(context)!.search,
+              ),
+            ),
       ],
     );
   }
@@ -50,15 +73,20 @@ class AppTextFieldWidget extends StatelessWidget {
   const AppTextFieldWidget({
     super.key,
     required TextEditingController controller,
+    this.ingredientsScreen,
   }) : _controller = controller;
 
   final TextEditingController _controller;
+  final bool? ingredientsScreen;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: AppDimensions.setWidth(context, 0.6),
-      padding: EdgeInsets.symmetric(horizontal: 18.0),
+      width:
+          ingredientsScreen == true
+              ? AppDimensions.setWidth(context, 0.7)
+              : AppDimensions.setWidth(context, 0.6),
+      padding: EdgeInsets.symmetric(horizontal: 20.0),
       decoration: BoxDecoration(
         color: Theme.of(context).cardColor,
         borderRadius: BorderRadius.all(Radius.circular(30)),

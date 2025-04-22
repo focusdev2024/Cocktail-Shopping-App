@@ -107,7 +107,7 @@ class _CocktailsScreenState extends State<CocktailsScreen> {
             child: SizedBox(height: AppDimensions.setHeight(context, 0.01)),
           ),
           SliverToBoxAdapter(
-            child: RecommendedIngredientsWidget(
+            child: RecommendedCocktailsWidget(
               ingredients: ingredients,
               weRecommendedClick: _weRecommendedClick,
             ),

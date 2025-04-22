@@ -108,196 +108,200 @@ class CocktailDrawerScreenState extends State<CocktailDrawerScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(
-        children: <Widget>[
-          CustomScrollView(
-            slivers: <Widget>[
-              SliverToBoxAdapter(child: SizedBox(height: 10)),
-              SliverToBoxAdapter(child: DrawerFilterText()),
-              SliverToBoxAdapter(
-                child: Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: SearchWidget(
-                    controller: controller,
-                    onSearch: _activateSearchButton,
+      body: SafeArea(
+        child: Stack(
+          children: <Widget>[
+            CustomScrollView(
+              slivers: <Widget>[
+                SliverToBoxAdapter(child: SizedBox(height: 10)),
+                SliverToBoxAdapter(child: DrawerFilterText()),
+                SliverToBoxAdapter(
+                  child: Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: SearchWidget(
+                      controller: controller,
+                      onSearch: _activateSearchButton,
+                    ),
                   ),
                 ),
-              ),
-              SliverToBoxAdapter(
-                child: SingleChildScrollView(
-                  physics: NeverScrollableScrollPhysics(),
-                  padding: const EdgeInsets.all(12),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children:
-                        filterCategories.entries.map((entry) {
-                          final category = entry.key;
-                          final values = entry.value;
-                          return Padding(
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: 10.0,
-                            ),
-                            child: Container(
-                              width: double.infinity,
-                              margin: const EdgeInsets.only(bottom: 10),
-                              decoration: BoxDecoration(
-                                color: Theme.of(context).cardColor,
-                                borderRadius: const BorderRadius.all(
-                                  Radius.circular(20),
-                                ),
-                                border: Border.all(
-                                  color: Theme.of(context).primaryColor,
-                                  width: 0.8,
-                                ),
+                SliverToBoxAdapter(
+                  child: SingleChildScrollView(
+                    physics: NeverScrollableScrollPhysics(),
+                    padding: const EdgeInsets.all(12),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children:
+                          filterCategories.entries.map((entry) {
+                            final category = entry.key;
+                            final values = entry.value;
+                            return Padding(
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 10.0,
                               ),
-                              child: Padding(
-                                padding: const EdgeInsets.all(12.0),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    MainSmallTextWidget(
-                                      text: category,
-                                      colorDark: false,
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                    const SizedBox(height: 10),
-                                    Wrap(
-                                      spacing: 8,
-                                      runSpacing: 8,
-                                      children:
-                                          values.map((value) {
-                                            final selected = isSelected(
-                                              category,
-                                              value,
-                                            );
-                                            return GestureDetector(
-                                              onTap:
-                                                  () => toggleFilter(
-                                                    category,
-                                                    value,
-                                                  ),
-                                              child: Container(
-                                                padding:
-                                                    const EdgeInsets.symmetric(
-                                                      horizontal: 10,
-                                                      vertical: 5,
+                              child: Container(
+                                width: double.infinity,
+                                margin: const EdgeInsets.only(bottom: 10),
+                                decoration: BoxDecoration(
+                                  color: Theme.of(context).cardColor,
+                                  borderRadius: const BorderRadius.all(
+                                    Radius.circular(20),
+                                  ),
+                                  border: Border.all(
+                                    color: Theme.of(context).primaryColor,
+                                    width: 0.8,
+                                  ),
+                                ),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(12.0),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      MainSmallTextWidget(
+                                        text: category,
+                                        colorDark: false,
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                      const SizedBox(height: 10),
+                                      Wrap(
+                                        spacing: 8,
+                                        runSpacing: 8,
+                                        children:
+                                            values.map((value) {
+                                              final selected = isSelected(
+                                                category,
+                                                value,
+                                              );
+                                              return GestureDetector(
+                                                onTap:
+                                                    () => toggleFilter(
+                                                      category,
+                                                      value,
                                                     ),
-                                                decoration: BoxDecoration(
-                                                  color:
-                                                      selected
-                                                          ? Theme.of(
-                                                            context,
-                                                          ).focusColor
-                                                          : Theme.of(
-                                                            context,
-                                                          ).disabledColor
-                                                          // ignore: deprecated_member_use
-                                                          .withOpacity(0.3),
-                                                  borderRadius:
-                                                      const BorderRadius.all(
-                                                        Radius.circular(20),
+                                                child: Container(
+                                                  padding:
+                                                      const EdgeInsets.symmetric(
+                                                        horizontal: 10,
+                                                        vertical: 5,
                                                       ),
+                                                  decoration: BoxDecoration(
+                                                    color:
+                                                        selected
+                                                            ? Theme.of(
+                                                              context,
+                                                            ).focusColor
+                                                            : Theme.of(
+                                                              context,
+                                                            ).disabledColor
+                                                            // ignore: deprecated_member_use
+                                                            .withOpacity(0.3),
+                                                    borderRadius:
+                                                        const BorderRadius.all(
+                                                          Radius.circular(20),
+                                                        ),
+                                                  ),
+                                                  child: MainSmallTextWidget(
+                                                    text: value,
+                                                    colorDark: false,
+                                                  ),
                                                 ),
-                                                child: MainSmallTextWidget(
-                                                  text: value,
-                                                  colorDark: false,
-                                                ),
-                                              ),
-                                            );
-                                          }).toList(),
-                                    ),
-                                  ],
+                                              );
+                                            }).toList(),
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ),
-                            ),
-                          );
-                        }).toList(),
+                            );
+                          }).toList(),
+                    ),
                   ),
                 ),
-              ),
-            ],
-          ),
-          Positioned(
-            left: 0,
-            right: 0,
-            bottom: 0,
-            child: SizedBox(
-              width: double.infinity,
-              height: 150,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: OutlinedButton(
-                      style: ElevatedButton.styleFrom(
-                        padding: const EdgeInsets.symmetric(vertical: 15.0),
-                        backgroundColor: Theme.of(context).cardColor,
-                        shape: RoundedRectangleBorder(
-                          side: BorderSide(
-                            color: Theme.of(context).primaryColor,
-                            width: 1.5,
+                SliverToBoxAdapter(child: SizedBox(height: 120)),
+              ],
+            ),
+            Positioned(
+              left: 0,
+              right: 0,
+              bottom: 0,
+              child: SizedBox(
+                width: double.infinity,
+                height: 150,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: OutlinedButton(
+                        style: ElevatedButton.styleFrom(
+                          padding: const EdgeInsets.symmetric(vertical: 15.0),
+                          backgroundColor: Theme.of(context).cardColor,
+                          shape: RoundedRectangleBorder(
+                            side: BorderSide(
+                              color: Theme.of(context).primaryColor,
+                              width: 1.5,
+                            ),
+                            borderRadius: const BorderRadius.all(
+                              Radius.circular(30),
+                            ),
                           ),
-                          borderRadius: const BorderRadius.all(
-                            Radius.circular(30),
-                          ),
+                          minimumSize: Size(
+                            AppDimensions.setWidth(context, 0.9),
+                            0,
+                          ), // preserve width
+                          alignment: Alignment.center,
                         ),
-                        minimumSize: Size(
-                          AppDimensions.setWidth(context, 0.9),
-                          0,
-                        ), // preserve width
-                        alignment: Alignment.center,
-                      ),
 
-                      onPressed: () {
-                        setState(() {
-                          resetFilters();
-                        });
-                      },
-                      child: MainSmallTextWidget(
-                        text: 'Reset',
-                        colorDark: false,
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
+                        onPressed: () {
+                          setState(() {
+                            resetFilters();
+                          });
+                        },
+                        child: MainSmallTextWidget(
+                          text: 'Reset',
+                          colorDark: false,
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        padding: const EdgeInsets.symmetric(vertical: 15.0),
-                        backgroundColor: Theme.of(context).primaryColor,
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          padding: const EdgeInsets.symmetric(vertical: 15.0),
+                          backgroundColor: Theme.of(context).primaryColor,
 
-                        shape: RoundedRectangleBorder(
-                          borderRadius: const BorderRadius.all(
-                            Radius.circular(30),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: const BorderRadius.all(
+                              Radius.circular(30),
+                            ),
                           ),
+                          minimumSize: Size(
+                            AppDimensions.setWidth(context, 0.9),
+                            0,
+                          ), // preserve width
+                          alignment: Alignment.center,
                         ),
-                        minimumSize: Size(
-                          AppDimensions.setWidth(context, 0.9),
-                          0,
-                        ), // preserve width
-                        alignment: Alignment.center,
-                      ),
-                      onPressed: () {
-                        // // Handle filter submission
-                        // print("Selected filters: $selectedFilters");
-                      },
-                      child: MainSmallTextWidget(
-                        text: 'Show results',
-                        colorDark: true,
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
+                        onPressed: () {
+                          // // Handle filter submission
+                          // print("Selected filters: $selectedFilters");
+                        },
+                        child: MainSmallTextWidget(
+                          text: 'Show results',
+                          colorDark: true,
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

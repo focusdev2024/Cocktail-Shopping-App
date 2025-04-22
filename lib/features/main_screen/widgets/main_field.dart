@@ -71,6 +71,7 @@ class _MainScreenContentState extends State<MainScreenContent> {
                     SearchWidget(
                       controller: widget.controller,
                       onSearch: widget.onSearch,
+                      ingredientsScreen: false,
                     ),
                   ],
                 ),
