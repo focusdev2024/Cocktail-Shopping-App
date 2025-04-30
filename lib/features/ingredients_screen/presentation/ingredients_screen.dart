@@ -172,6 +172,7 @@ class IngredientsScreenState extends State<IngredientsScreen> {
               child: CocktailAppBarWidget(
                 onOpenDrawer: _openDrawer,
                 openDrawerIcon: openDrawerIcon,
+                onSearchTap: _openDrawer,
               ),
             ),
           ),

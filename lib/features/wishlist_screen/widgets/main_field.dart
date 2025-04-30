@@ -1,6 +1,7 @@
 import 'package:cocktail_cosmo_design/core/constants/app_dimension.dart';
 import 'package:cocktail_cosmo_design/core/widgets/main_large_text.dart';
 import 'package:cocktail_cosmo_design/core/widgets/main_small_text.dart';
+import 'package:cocktail_cosmo_design/features/cocktails_screen/presentation/cocktail_drawer_screen.dart';
 import 'package:cocktail_cosmo_design/features/cocktails_screen/widgets/cocltail_appbar_widget.dart';
 import 'package:cocktail_cosmo_design/features/main_screen/widgets/main_drawer.dart';
 import 'package:flutter/material.dart';
@@ -24,11 +25,22 @@ class WishlistScreenContent extends StatefulWidget {
 }
 
 class _WishlistScreenContent extends State<WishlistScreenContent> {
+  void _activateSearchButton() {
+    Navigator.push(
+      context,
+      PageRouteBuilder(
+        pageBuilder:
+            (context, animation, secondaryAnimation) => CocktailDrawerScreen(),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Stack(
       children: <Widget>[
         CocktailAppBarWidget(
+          onSearchTap: _activateSearchButton,
           onOpenDrawer: widget.onOpenDrawer,
           openDrawerIcon:
               widget.isDrawerOpen

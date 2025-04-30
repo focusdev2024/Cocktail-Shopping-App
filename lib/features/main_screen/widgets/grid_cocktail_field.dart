@@ -52,8 +52,11 @@ class ResponsiveGrid extends StatelessWidget {
           ),
           itemBuilder: (context, index) {
             final item = recipes[index];
-            return SizedBox(
+            return Container(
+              padding: EdgeInsets.all(8),
+
               child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Container(
@@ -70,10 +73,16 @@ class ResponsiveGrid extends StatelessWidget {
                   SizedBox(height: 10.0),
                   Text(
                     item.title,
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
                   ),
                   SizedBox(height: 5.0),
-                  Text(item.description),
+                  Expanded(
+                    child: Text(
+                      item.description,
+                      maxLines: 3,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ),
                 ],
               ),
             );

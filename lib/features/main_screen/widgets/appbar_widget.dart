@@ -9,12 +9,14 @@ class AppBarWidget extends StatelessWidget {
   final String openDrawerIcon;
   final VoidCallback onOpenDrawer;
   final bool? appTransparest;
+  final VoidCallback? onSearchTap;
 
   const AppBarWidget({
     super.key,
     required this.openDrawerIcon,
     required this.onOpenDrawer,
     this.appTransparest = true,
+    this.onSearchTap,
   });
 
   @override
@@ -39,7 +41,7 @@ class AppBarWidget extends StatelessWidget {
                         : Theme.of(context).primaryColor,
               ),
               GestureDetector(
-                onTap: () {},
+                onTap: onSearchTap,
                 child: Container(
                   width: AppDimensions.setWidth(context, 0.4),
                   padding: EdgeInsets.symmetric(

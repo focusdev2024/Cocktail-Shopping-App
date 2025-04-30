@@ -20,7 +20,16 @@ class CocktailsScreen extends StatefulWidget {
 
 class _CocktailsScreenState extends State<CocktailsScreen> {
   final TextEditingController controller = TextEditingController();
-  void _activateSearchButton() {}
+  void _activateSearchButton() {
+    Navigator.push(
+      context,
+      PageRouteBuilder(
+        pageBuilder:
+            (context, animation, secondaryAnimation) => CocktailDrawerScreen(),
+      ),
+    );
+  }
+
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   void _openDrawer() {
@@ -96,6 +105,7 @@ class _CocktailsScreenState extends State<CocktailsScreen> {
               child: CocktailAppBarWidget(
                 onOpenDrawer: _openDrawer,
                 openDrawerIcon: openDrawerIcon,
+                onSearchTap: _openDrawer,
               ),
             ),
           ),

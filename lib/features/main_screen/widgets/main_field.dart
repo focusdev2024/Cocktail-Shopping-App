@@ -40,6 +40,7 @@ class _MainScreenContentState extends State<MainScreenContent> {
         GradientColorWidget(),
         //appbar field
         AppBarWidget(
+          onSearchTap: widget.onSearch,
           onOpenDrawer: widget.onOpenDrawer,
           openDrawerIcon:
               widget.isDrawerOpen

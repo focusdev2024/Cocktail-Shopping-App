@@ -2,7 +2,6 @@ import 'package:cocktail_cosmo_design/core/constants/app_dimension.dart';
 import 'package:cocktail_cosmo_design/core/widgets/content_small_text.dart';
 import 'package:cocktail_cosmo_design/core/widgets/main_medium_text.dart';
 import 'package:cocktail_cosmo_design/features/cocktails_screen/widgets/cocltail_appbar_widget.dart';
-import 'package:cocktail_cosmo_design/features/home_page/presentation/home_page.dart';
 import 'package:cocktail_cosmo_design/features/main_screen/widgets/main_drawer.dart';
 import 'package:flutter/material.dart';
 
@@ -11,6 +10,8 @@ class BoookScreenContent extends StatefulWidget {
   final String openDrawerIcon;
   final String closeDrawerIcon;
   final VoidCallback onOpenDrawer;
+  final VoidCallback goToHomePage;
+  final VoidCallback onSearchTap;
 
   const BoookScreenContent({
     super.key,
@@ -18,6 +19,8 @@ class BoookScreenContent extends StatefulWidget {
     required this.openDrawerIcon,
     required this.closeDrawerIcon,
     required this.onOpenDrawer,
+    required this.goToHomePage,
+    required this.onSearchTap,
   });
 
   @override
@@ -31,6 +34,7 @@ class _BoookScreenContent extends State<BoookScreenContent> {
       children: <Widget>[
         CocktailAppBarWidget(
           onOpenDrawer: widget.onOpenDrawer,
+          onSearchTap: widget.onSearchTap,
           openDrawerIcon:
               widget.isDrawerOpen
                   ? widget.closeDrawerIcon
@@ -55,12 +59,7 @@ class _BoookScreenContent extends State<BoookScreenContent> {
                       borderRadius: BorderRadius.circular(30),
                     ),
                   ),
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => const HomePage()),
-                    );
-                  },
+                  onPressed: widget.goToHomePage,
                   child: ContentSmallTextWidget(text: 'Back to Home'),
                 ),
               ],

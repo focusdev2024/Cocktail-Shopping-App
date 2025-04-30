@@ -8,11 +8,13 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 class CocktailAppBarWidget extends StatelessWidget {
   final String openDrawerIcon;
   final VoidCallback onOpenDrawer;
+  final VoidCallback onSearchTap;
 
   const CocktailAppBarWidget({
     super.key,
     required this.openDrawerIcon,
     required this.onOpenDrawer,
+    required this.onSearchTap,
   });
 
   @override
@@ -34,7 +36,7 @@ class CocktailAppBarWidget extends StatelessWidget {
                 color: Theme.of(context).primaryColor,
               ),
               GestureDetector(
-                onTap: () {},
+                onTap: onSearchTap,
                 child: Container(
                   width: AppDimensions.setWidth(context, 0.4),
                   padding: EdgeInsets.symmetric(

@@ -46,22 +46,26 @@ class SearchWidget extends StatelessWidget {
                 ),
               ),
             )
-            : ElevatedButton(
-              onPressed: onSearch,
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Theme.of(context).focusColor,
-                padding: EdgeInsets.symmetric(horizontal: 18.0, vertical: 20.0),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(30)),
+            : SizedBox(
+              height: 45,
+              child: ElevatedButton(
+                onPressed: onSearch,
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Theme.of(context).focusColor,
+                  padding: EdgeInsets.symmetric(horizontal: 18.0),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(30)),
+                  ),
+                  minimumSize: Size(
+                    AppDimensions.setWidth(context, 0.2),
+                    0,
+                  ), // preserve width
+
+                  alignment: Alignment.center,
                 ),
-                minimumSize: Size(
-                  AppDimensions.setWidth(context, 0.2),
-                  0,
-                ), // preserve width
-                alignment: Alignment.center,
-              ),
-              child: ContentSmallTextWidget(
-                text: AppLocalizations.of(context)!.search,
+                child: ContentSmallTextWidget(
+                  text: AppLocalizations.of(context)!.search,
+                ),
               ),
             ),
       ],

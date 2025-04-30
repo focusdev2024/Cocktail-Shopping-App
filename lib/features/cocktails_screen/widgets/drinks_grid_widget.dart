@@ -79,66 +79,58 @@ class _DrinksGridWidgetState extends State<DrinksGridWidget> {
                       ),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Expanded(
-                            flex: 2,
-                            child: ContainerTextWidget(
-                              item: drink['name'],
-                              color: null,
-                            ),
-                          ),
+                          ContainerTextWidget(item: drink['name'], color: null),
                           const SizedBox(height: 10),
-                          Expanded(
-                            flex: 1,
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Row(
-                                  children: [
-                                    GestureDetector(
-                                      onTap: () {}, // _toggleThumbupClick,
-                                      child: Image.asset(
-                                        AppIcons.thumbupIcon,
-                                        color: Theme.of(context).cardColor,
-                                        // _thumbup
-                                        //     ? Theme.of(
-                                        //       context,
-                                        //     ).focusColor
-                                        //     : Theme.of(
-                                        //       context,
-                                        //     ).cardColor,
-                                        width: 18,
-                                      ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Row(
+                                children: [
+                                  GestureDetector(
+                                    onTap: () {}, // _toggleThumbupClick,
+                                    child: Image.asset(
+                                      AppIcons.thumbupIcon,
+                                      color: Theme.of(context).cardColor,
+                                      // _thumbup
+                                      //     ? Theme.of(
+                                      //       context,
+                                      //     ).focusColor
+                                      //     : Theme.of(
+                                      //       context,
+                                      //     ).cardColor,
+                                      width: 18,
                                     ),
-                                    const SizedBox(width: 6),
-                                    ContainerTextWidget(
-                                      item: '${drink['likes']}',
-                                      color: null,
+                                  ),
+                                  const SizedBox(width: 6),
+                                  ContainerTextWidget(
+                                    item: '${drink['likes']}',
+                                    color: null,
+                                  ),
+                                ],
+                              ),
+                              Row(
+                                children: [
+                                  GestureDetector(
+                                    onTap: _toggleStarClick,
+                                    child: Image.asset(
+                                      AppIcons.starIcon,
+                                      color:
+                                          _starClick
+                                              ? Theme.of(context).focusColor
+                                              : Theme.of(context).cardColor,
+                                      width: 18,
                                     ),
-                                  ],
-                                ),
-                                Row(
-                                  children: [
-                                    GestureDetector(
-                                      onTap: _toggleStarClick,
-                                      child: Image.asset(
-                                        AppIcons.starIcon,
-                                        color:
-                                            _starClick
-                                                ? Theme.of(context).focusColor
-                                                : Theme.of(context).cardColor,
-                                        width: 18,
-                                      ),
-                                    ),
-                                    const SizedBox(width: 6),
-                                    ContainerTextWidget(
-                                      item: '${drink['stars']}',
-                                      color: null,
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
+                                  ),
+                                  const SizedBox(width: 6),
+                                  ContainerTextWidget(
+                                    item: '${drink['stars']}',
+                                    color: null,
+                                  ),
+                                ],
+                              ),
+                            ],
                           ),
                         ],
                       ),

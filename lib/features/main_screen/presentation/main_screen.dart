@@ -1,5 +1,6 @@
 import 'package:cocktail_cosmo_design/core/assets_path/app_icons.dart';
 import 'package:cocktail_cosmo_design/core/constants/app_dimension.dart';
+import 'package:cocktail_cosmo_design/features/cocktails_screen/presentation/cocktail_drawer_screen.dart';
 import 'package:cocktail_cosmo_design/features/main_screen/widgets/cocktails_menu.dart';
 import 'package:cocktail_cosmo_design/features/main_screen/widgets/exprement_with_diff_gin_text.dart';
 import 'package:cocktail_cosmo_design/features/main_screen/widgets/gin_categories.dart';
@@ -12,7 +13,8 @@ import 'package:cocktail_cosmo_design/features/main_screen/widgets/your_cocktail
 import 'package:flutter/material.dart';
 
 class MainScreen extends StatefulWidget {
-  const MainScreen({super.key});
+  final Function(int) onTabChange;
+  const MainScreen({super.key, required this.onTabChange});
 
   @override
   State<MainScreen> createState() => _MainScreenState();
@@ -32,7 +34,15 @@ class _MainScreenState extends State<MainScreen> {
   final String openDrawerIcon = AppIcons.menuIcon;
   final String closeDrawerIcon = AppIcons.closeIcon;
 
-  void _activateSearchButton() {}
+  void _activateSearchButton() {
+    Navigator.push(
+      context,
+      PageRouteBuilder(
+        pageBuilder:
+            (context, animation, secondaryAnimation) => CocktailDrawerScreen(),
+      ),
+    );
+  }
 
   final List<String> ingredients = [
     'tonic',
@@ -58,16 +68,8 @@ class _MainScreenState extends State<MainScreen> {
     });
   }
 
-  void goToNextPage() {
-    // Navigator.push(
-    //   context,
-    //   MaterialPageRoute(
-    //     builder:
-    //         (_) => SelectedIngredientsScreen(
-    //           selected: selectedIngredients.toList(),
-    //         ),
-    //   ),
-    // );
+  void viewAllIngredients() {
+    widget.onTabChange(2);
   }
 
   final List<String> categories = [
@@ -126,13 +128,12 @@ class _MainScreenState extends State<MainScreen> {
             child: SizedBox(height: AppDimensions.setHeight(context, 0.05)),
           ),
           SliverToBoxAdapter(child: ResponsiveGrid()),
+
           SliverToBoxAdapter(
             child: SizedBox(height: AppDimensions.setHeight(context, 0.05)),
           ),
           SliverToBoxAdapter(child: YourCocktailMenuText()),
-          SliverToBoxAdapter(
-            child: SizedBox(height: AppDimensions.setHeight(context, 0.05)),
-          ),
+
           SliverToBoxAdapter(child: HorizontalCardList()),
           SliverToBoxAdapter(
             child: SizedBox(height: AppDimensions.setHeight(context, 0.05)),
@@ -146,11 +147,11 @@ class _MainScreenState extends State<MainScreen> {
               ingredients: ingredients,
               selectedIngredients: selectedIngredients,
               toggleSelection: toggleSelection,
-              goToNextPage: goToNextPage,
+              goToNextPage: viewAllIngredients,
             ),
           ),
           SliverToBoxAdapter(
-            child: SizedBox(height: AppDimensions.setHeight(context, 0.02)),
+            child: SizedBox(height: AppDimensions.setHeight(context, 0.04)),
           ),
           SliverToBoxAdapter(child: ExperimentWithDiffGinText()),
           SliverToBoxAdapter(
@@ -161,6 +162,7 @@ class _MainScreenState extends State<MainScreen> {
               onTap: _categoryTap,
             ),
           ),
+
           SliverToBoxAdapter(
             child: SizedBox(height: AppDimensions.setHeight(context, 0.02)),
           ),

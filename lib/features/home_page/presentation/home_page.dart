@@ -18,11 +18,11 @@ class HomePage extends StatefulWidget {
 class HomePageState extends State<HomePage> {
   int _selectedIndex = 0;
 
-  final List<Widget> _pages = [
-    MainScreen(),
+  List<Widget> get _pages => [
+    MainScreen(onTabChange: _onItemTapped),
     CocktailsScreen(),
     IngredientsScreen(),
-    BookScreen(),
+    BookScreen(goToHomePage: _onItemTapped),
     WishlistScreen(),
   ];
 
