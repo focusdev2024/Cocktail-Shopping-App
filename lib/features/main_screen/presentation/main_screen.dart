@@ -1,5 +1,6 @@
 import 'package:cocktail_cosmo_design/core/assets_path/app_icons.dart';
 import 'package:cocktail_cosmo_design/core/constants/app_dimension.dart';
+import 'package:cocktail_cosmo_design/features/cocktail_detail_screen/presentation/cocktail_detail_screen.dart';
 import 'package:cocktail_cosmo_design/features/cocktails_screen/presentation/cocktail_drawer_screen.dart';
 import 'package:cocktail_cosmo_design/features/main_screen/widgets/cocktails_menu.dart';
 import 'package:cocktail_cosmo_design/features/main_screen/widgets/exprement_with_diff_gin_text.dart';
@@ -98,13 +99,20 @@ class _MainScreenState extends State<MainScreen> {
     "77+ Recipes",
   ];
 
-  void _categoryTap() {
-    // Navigator.push(
-    //   context,
-    //   MaterialPageRoute(
-    //     builder: (_) => const CategoryScreen(),
-    //   ),
-    // );
+  // void _categoryTap() {
+  //   // Navigator.push(
+  //   //   context,
+  //   //   MaterialPageRoute(
+  //   //     builder: (_) => const CategoryScreen(),
+  //   //   ),
+  //   // );
+  // }
+
+  void _cocktailDeteilScreen() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (_) => const CocktailDeteilScreen()),
+    );
   }
 
   @override
@@ -134,7 +142,9 @@ class _MainScreenState extends State<MainScreen> {
           ),
           SliverToBoxAdapter(child: YourCocktailMenuText()),
 
-          SliverToBoxAdapter(child: HorizontalCardList()),
+          SliverToBoxAdapter(
+            child: HorizontalCardList(onTap: _cocktailDeteilScreen),
+          ),
           SliverToBoxAdapter(
             child: SizedBox(height: AppDimensions.setHeight(context, 0.05)),
           ),
@@ -159,7 +169,7 @@ class _MainScreenState extends State<MainScreen> {
               categories: categories,
               categoriesImage: categoriesImage,
               recipiesTitle: recipiesTitle,
-              onTap: _categoryTap,
+              ontap: _cocktailDeteilScreen,
             ),
           ),
 
@@ -170,7 +180,9 @@ class _MainScreenState extends State<MainScreen> {
           SliverToBoxAdapter(
             child: SizedBox(height: AppDimensions.setHeight(context, 0.02)),
           ),
-          SliverToBoxAdapter(child: HorizontalCardList()),
+          SliverToBoxAdapter(
+            child: HorizontalCardList(onTap: _cocktailDeteilScreen),
+          ),
           SliverToBoxAdapter(
             child: SizedBox(height: AppDimensions.setHeight(context, 0.02)),
           ),

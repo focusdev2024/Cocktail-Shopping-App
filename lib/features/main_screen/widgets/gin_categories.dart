@@ -1,4 +1,5 @@
 import 'package:cocktail_cosmo_design/core/assets_path/app_icons.dart';
+import 'package:cocktail_cosmo_design/core/constants/app_dimension.dart';
 import 'package:cocktail_cosmo_design/core/widgets/container_grey_small_text.dart';
 import 'package:cocktail_cosmo_design/core/widgets/container_text.dart';
 import 'package:flutter/material.dart';
@@ -10,7 +11,6 @@ class GinCategoriesWidget extends StatelessWidget {
     required this.categoriesImage,
     required this.recipiesTitle,
     this.ontap,
-    required void Function() onTap,
   });
 
   final List<String> categories;
@@ -20,53 +20,39 @@ class GinCategoriesWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        LayoutBuilder(
-          builder: (context, constraints) {
-            int crossAxisCount = constraints.maxWidth > 600 ? 4 : 2;
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        int crossAxisCount = constraints.maxWidth > 600 ? 4 : 2;
+        final screenHeight = AppDimensions.screenHeight(context);
+        final screenWidth = AppDimensions.screenWidth(context);
+        final desiredItemHeight = screenHeight * 0.25;
+        final desiredItemWidth = screenWidth / crossAxisCount;
+        final childAspectRatio = desiredItemWidth / desiredItemHeight;
 
-            return GridView.builder(
-              padding: const EdgeInsets.symmetric(horizontal: 16.0),
-              shrinkWrap: true,
-              itemCount: 6,
-              physics: NeverScrollableScrollPhysics(),
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: crossAxisCount,
-                crossAxisSpacing: 5,
-                mainAxisSpacing: 5,
-                childAspectRatio: 1.0,
+        return GridView.builder(
+          padding: const EdgeInsets.symmetric(horizontal: 16.0),
+          shrinkWrap: true,
+          itemCount: 6,
+          physics: NeverScrollableScrollPhysics(),
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: crossAxisCount,
+            crossAxisSpacing: 5,
+            mainAxisSpacing: 16,
+            childAspectRatio: childAspectRatio,
+          ),
+          itemBuilder: (context, index) {
+            return GestureDetector(
+              onTap: ontap,
+              child: CategoryCard(
+                title: categories[index],
+                imagePath: categoriesImage[index],
+                recipiesTitle: recipiesTitle[index],
+                onTap: ontap,
               ),
-              itemBuilder: (context, index) {
-                return GestureDetector(
-                  onTap: ontap,
-                  child: CategoryCard(
-                    title: categories[index],
-                    imagePath: categoriesImage[index],
-                    recipiesTitle: recipiesTitle[index],
-                    onTap: ontap,
-                  ),
-                );
-              },
             );
           },
-        ),
-        // SizedBox(height: 10),
-        // ElevatedButton(
-        //   style: ElevatedButton.styleFrom(
-        //     backgroundColor: Theme.of(context).focusColor,
-        //     padding: const EdgeInsets.symmetric(horizontal: 34, vertical: 15),
-        //     shape: RoundedRectangleBorder(
-        //       borderRadius: BorderRadius.circular(30),
-        //     ),
-        //   ),
-        //   onPressed: () {},
-        //   child: ContainerTextWidget(
-        //     item: 'Explore More',
-        //     color: Theme.of(context).canvasColor,
-        //   ),
-        // ),
-      ],
+        );
+      },
     );
   }
 }

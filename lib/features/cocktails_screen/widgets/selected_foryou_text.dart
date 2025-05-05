@@ -1,8 +1,9 @@
 import 'package:cocktail_cosmo_design/core/widgets/main_large_text.dart';
 import 'package:flutter/material.dart';
 
-class SelectedForYouText extends StatelessWidget {
-  const SelectedForYouText({super.key});
+class BlueAloneText extends StatelessWidget {
+  final String text;
+  const BlueAloneText({super.key, required this.text});
 
   @override
   Widget build(BuildContext context) {
@@ -11,7 +12,7 @@ class SelectedForYouText extends StatelessWidget {
       child: Column(
         children: [
           MainLargeTextWidget(
-            text: 'SELECTED FOR YOU',
+            text: text,
             colorDark: false,
             fontSize: 32,
             textAlign: TextAlign.center,

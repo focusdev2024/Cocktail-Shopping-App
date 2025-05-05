@@ -1,9 +1,12 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:cocktail_cosmo_design/core/assets_path/app_icons.dart';
 import 'package:cocktail_cosmo_design/core/widgets/container_text.dart';
 import 'package:flutter/material.dart';
 
 class HorizontalCardList extends StatefulWidget {
-  const HorizontalCardList({super.key});
+  final VoidCallback? onTap;
+  const HorizontalCardList({super.key, this.onTap});
 
   @override
   State<HorizontalCardList> createState() => _HorizontalCardListState();
@@ -65,124 +68,130 @@ class _HorizontalCardListState extends State<HorizontalCardList> {
             },
             itemBuilder: (context, index) {
               final item = items[index];
-              return Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 8.0,
-                  vertical: 10.0,
-                ),
-                child: Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(18),
-                    boxShadow: [
-                      BoxShadow(
-                        // ignore: deprecated_member_use
-                        color: Theme.of(context).disabledColor.withOpacity(0.2),
-                        blurRadius: 10,
-                        spreadRadius: 2,
-                      ),
-                    ],
+              return GestureDetector(
+                onTap: widget.onTap,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 8.0,
+                    vertical: 10.0,
                   ),
-                  child: Column(
-                    children: [
-                      Expanded(
-                        flex: 6,
-                        child: ClipRRect(
-                          borderRadius: const BorderRadius.only(
-                            topLeft: Radius.circular(18),
-                            topRight: Radius.circular(18),
-                          ),
-                          child: Image.asset(
-                            item['image'],
-                            height: 180,
-                            width: double.infinity,
-                            fit: BoxFit.fill,
-                          ),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(18),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Theme.of(
+                            context,
+                          ).disabledColor.withOpacity(0.2),
+                          blurRadius: 10,
+                          spreadRadius: 2,
                         ),
-                      ),
-                      Expanded(
-                        flex: 2,
-                        child: Container(
-                          padding: const EdgeInsets.all(12),
-                          decoration: BoxDecoration(
-                            color: Theme.of(context).primaryColor,
+                      ],
+                    ),
+                    child: Column(
+                      children: [
+                        Expanded(
+                          flex: 6,
+                          child: ClipRRect(
                             borderRadius: const BorderRadius.only(
-                              bottomLeft: Radius.circular(18),
-                              bottomRight: Radius.circular(18),
+                              topLeft: Radius.circular(18),
+                              topRight: Radius.circular(18),
+                            ),
+                            child: Image.asset(
+                              item['image'],
+                              height: 180,
+                              width: double.infinity,
+                              fit: BoxFit.fill,
                             ),
                           ),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Expanded(
-                                flex: 2,
-                                child: ContainerTextWidget(
-                                  item: item['title'],
-                                  color: null,
-                                ),
+                        ),
+                        Expanded(
+                          flex: 2,
+                          child: Container(
+                            padding: const EdgeInsets.all(12),
+                            decoration: BoxDecoration(
+                              color: Theme.of(context).primaryColor,
+                              borderRadius: const BorderRadius.only(
+                                bottomLeft: Radius.circular(18),
+                                bottomRight: Radius.circular(18),
                               ),
-                              const SizedBox(height: 10),
-                              Expanded(
-                                flex: 1,
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Row(
-                                      children: [
-                                        GestureDetector(
-                                          onTap: () {}, // _toggleThumbupClick,
-                                          child: Image.asset(
-                                            AppIcons.thumbupIcon,
-                                            color: Theme.of(context).cardColor,
-                                            // _thumbup
-                                            //     ? Theme.of(
-                                            //       context,
-                                            //     ).focusColor
-                                            //     : Theme.of(
-                                            //       context,
-                                            //     ).cardColor,
-                                            width: 18,
-                                          ),
-                                        ),
-                                        const SizedBox(width: 6),
-                                        ContainerTextWidget(
-                                          item: '${item['likes']}',
-                                          color: null,
-                                        ),
-                                      ],
-                                    ),
-                                    Row(
-                                      children: [
-                                        GestureDetector(
-                                          onTap: _toggleStarClick,
-                                          child: Image.asset(
-                                            AppIcons.starIcon,
-                                            color:
-                                                _starClick
-                                                    ? Theme.of(
-                                                      context,
-                                                    ).focusColor
-                                                    : Theme.of(
-                                                      context,
-                                                    ).cardColor,
-                                            width: 18,
-                                          ),
-                                        ),
-                                        const SizedBox(width: 6),
-                                        ContainerTextWidget(
-                                          item: '${item['rating']}',
-                                          color: null,
-                                        ),
-                                      ],
-                                    ),
-                                  ],
+                            ),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Expanded(
+                                  flex: 2,
+                                  child: ContainerTextWidget(
+                                    item: item['title'],
+                                    color: null,
+                                  ),
                                 ),
-                              ),
-                            ],
+                                const SizedBox(height: 10),
+                                Expanded(
+                                  flex: 1,
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Row(
+                                        children: [
+                                          GestureDetector(
+                                            onTap:
+                                                () {}, // _toggleThumbupClick,
+                                            child: Image.asset(
+                                              AppIcons.thumbupIcon,
+                                              color:
+                                                  Theme.of(context).cardColor,
+                                              // _thumbup
+                                              //     ? Theme.of(
+                                              //       context,
+                                              //     ).focusColor
+                                              //     : Theme.of(
+                                              //       context,
+                                              //     ).cardColor,
+                                              width: 18,
+                                            ),
+                                          ),
+                                          const SizedBox(width: 6),
+                                          ContainerTextWidget(
+                                            item: '${item['likes']}',
+                                            color: null,
+                                          ),
+                                        ],
+                                      ),
+                                      Row(
+                                        children: [
+                                          GestureDetector(
+                                            onTap: _toggleStarClick,
+                                            child: Image.asset(
+                                              AppIcons.starIcon,
+                                              color:
+                                                  _starClick
+                                                      ? Theme.of(
+                                                        context,
+                                                      ).focusColor
+                                                      : Theme.of(
+                                                        context,
+                                                      ).cardColor,
+                                              width: 18,
+                                            ),
+                                          ),
+                                          const SizedBox(width: 6),
+                                          ContainerTextWidget(
+                                            item: '${item['rating']}',
+                                            color: null,
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
               );
@@ -192,7 +201,6 @@ class _HorizontalCardListState extends State<HorizontalCardList> {
 
         const SizedBox(height: 12),
 
-        // Dot Indicator
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: List.generate(
@@ -206,7 +214,6 @@ class _HorizontalCardListState extends State<HorizontalCardList> {
                 color:
                     _currentIndex == index
                         ? Theme.of(context).focusColor
-                        // ignore: deprecated_member_use
                         : Theme.of(context).primaryColor.withOpacity(0.8),
                 borderRadius: BorderRadius.circular(3),
               ),

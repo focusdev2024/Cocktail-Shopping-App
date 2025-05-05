@@ -49,6 +49,10 @@ dependencies:
   #for integrating with APIs
   http: ^1.3.0
   cached_network_image: ^3.4.1
+  #for showing videos from youtube
+  youtube_player_flutter: ^9.1.1
+  #for save values in local storage
+  shared_preferences: ^2.5.3
 
 dev_dependencies:
   flutter_test:
@@ -79,6 +83,7 @@ flutter:
     - assets/icons/
     - assets/logo/
     - assets/images/
+    - assets/social_media_icons/
   
 
   # For details regarding adding assets from package dependencies, see

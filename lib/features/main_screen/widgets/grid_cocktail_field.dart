@@ -1,4 +1,5 @@
 import 'package:cocktail_cosmo_design/core/assets_path/app_icons.dart';
+import 'package:cocktail_cosmo_design/core/constants/app_dimension.dart';
 import 'package:flutter/material.dart';
 
 class ResponsiveGrid extends StatelessWidget {
@@ -34,11 +35,11 @@ class ResponsiveGrid extends StatelessWidget {
     return LayoutBuilder(
       builder: (context, constraints) {
         int crossAxisCount = constraints.maxWidth > 600 ? 4 : 2;
-        final screenWidth = MediaQuery.of(context).size.width;
-        final itemWidth =
-            (screenWidth - (crossAxisCount - 1) * 16) / crossAxisCount;
-        final itemHeight = itemWidth / 0.9;
-        final aspectRatio = itemWidth / itemHeight;
+        final screenHeight = AppDimensions.screenHeight(context);
+        final screenWidth = AppDimensions.screenWidth(context);
+        final desiredItemHeight = screenHeight * 0.25;
+        final desiredItemWidth = screenWidth / crossAxisCount;
+        final childAspectRatio = desiredItemWidth / desiredItemHeight;
         return GridView.builder(
           padding: const EdgeInsets.symmetric(horizontal: 16.0),
           shrinkWrap: true,
@@ -48,7 +49,7 @@ class ResponsiveGrid extends StatelessWidget {
             crossAxisCount: crossAxisCount,
             crossAxisSpacing: 16,
             mainAxisSpacing: 16,
-            childAspectRatio: aspectRatio,
+            childAspectRatio: childAspectRatio,
           ),
           itemBuilder: (context, index) {
             final item = recipes[index];

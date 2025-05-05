@@ -9,12 +9,14 @@ class SearchWidget extends StatelessWidget {
   final TextEditingController controller;
   final VoidCallback onSearch;
   final bool? ingredientsScreen;
+  final String? searchText;
 
   const SearchWidget({
     super.key,
     required this.controller,
     required this.onSearch,
     this.ingredientsScreen,
+    this.searchText,
   });
 
   @override
@@ -64,7 +66,7 @@ class SearchWidget extends StatelessWidget {
                   alignment: Alignment.center,
                 ),
                 child: ContentSmallTextWidget(
-                  text: AppLocalizations.of(context)!.search,
+                  text: searchText ?? AppLocalizations.of(context)!.search,
                 ),
               ),
             ),

@@ -6,7 +6,7 @@ import 'package:cocktail_cosmo_design/features/cocktails_screen/widgets/ad_banne
 import 'package:cocktail_cosmo_design/features/cocktails_screen/widgets/based_advansed_filter_buttons.dart';
 import 'package:cocktail_cosmo_design/features/cocktails_screen/widgets/cocktail_page_resipies_text.dart';
 import 'package:cocktail_cosmo_design/features/cocktails_screen/widgets/cocltail_appbar_widget.dart';
-import 'package:cocktail_cosmo_design/features/cocktails_screen/widgets/drinks_grid_widget.dart';
+import 'package:cocktail_cosmo_design/core/widgets/drinks_grid_widget.dart';
 import 'package:cocktail_cosmo_design/features/cocktails_screen/widgets/selected_foryou_text.dart';
 import 'package:cocktail_cosmo_design/features/cocktails_screen/widgets/we_recommend_field.dart';
 import 'package:flutter/material.dart';
@@ -144,7 +144,7 @@ class _CocktailsScreenState extends State<CocktailsScreen> {
           SliverToBoxAdapter(
             child: SizedBox(height: AppDimensions.setHeight(context, 0.05)),
           ),
-          SliverToBoxAdapter(child: SelectedForYouText()),
+          SliverToBoxAdapter(child: BlueAloneText(text: 'SELECTED FOR YOU')),
           SliverToBoxAdapter(
             child: SizedBox(height: AppDimensions.setHeight(context, 0.02)),
           ),
