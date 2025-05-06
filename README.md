@@ -25,7 +25,7 @@
 
 ### 1. Clone the repository:
 ```bash
-git clone https://github.com/your-username/cocktail-cosmo-design.git
+git clone https://github.com/focusdev2024/cocktail_cosmo_design.git
 
 ```
 ### 2. Navigate to the project directory:
