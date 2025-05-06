@@ -82,6 +82,7 @@ Here’s a preview of what the app looks like:
 Here’s a preview of what the app looks like:
 
 ![Screenshot 1](info/intro01.png)
+<img src="info/intro01.png" width="300" />
 ![Screenshot 2](info/intro02.png)
 ![Screenshot 3](info/main01.png)
 ![Screenshot 3](info/main02.png)
