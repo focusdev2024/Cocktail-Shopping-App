@@ -79,14 +79,16 @@ We welcome contributions from everyone! To contribute to this project:
 
 Here’s a preview of what the app looks like:
 
-Here’s a preview of what the app looks like:
+<div style="display: flex; flex-wrap: wrap; gap: 10px;">
+  <img src="info/intro01.png" width="250" />
+  <img src="info/intro02.png" width="250" />
+  <img src="info/main01.png" width="250" />
+</div>
 
-![Screenshot 1](info/intro01.png)
-<img src="info/intro01.png" width="300" />
-![Screenshot 2](info/intro02.png)
-![Screenshot 3](info/main01.png)
-![Screenshot 3](info/main02.png)
-![Screenshot 3](info/cocktails01.png)
+<div style="display: flex; gap: 10px;">
+  <img src="info/main02.png" width="250" />
+  <img src="info/cocktails01.png" width="250" />
+</div>
 
 ## 🔗 Links
 
