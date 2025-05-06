@@ -84,6 +84,7 @@ flutter:
     - assets/logo/
     - assets/images/
     - assets/social_media_icons/
+    - assets/intro/
   
 
   # For details regarding adding assets from package dependencies, see

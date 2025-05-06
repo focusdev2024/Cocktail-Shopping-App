@@ -13,7 +13,7 @@ import 'package:cocktail_cosmo_design/main.dart';
 void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {
     // Build our app and trigger a frame.
-    await tester.pumpWidget(CocktailCosmo());
+    await tester.pumpWidget(CocktailCosmo(isFirstLaunch: true));
 
     // Verify that our counter starts at 0.
     expect(find.text('0'), findsOneWidget);
