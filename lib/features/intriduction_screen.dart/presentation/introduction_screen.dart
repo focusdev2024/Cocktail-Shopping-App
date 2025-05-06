@@ -28,7 +28,7 @@ class _IntroScreenState extends State<IntroScreen> {
   void _finishIntro() async {
     final prefs = await SharedPreferences.getInstance();
     await prefs.setBool('isFirstLaunch', false);
-    Get.offAllNamed('/home'); // Change route if needed
+    Get.offAllNamed('/home');
   }
 
   void _previousSlide() {
