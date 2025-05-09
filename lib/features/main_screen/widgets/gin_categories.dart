@@ -25,7 +25,7 @@ class GinCategoriesWidget extends StatelessWidget {
         int crossAxisCount = constraints.maxWidth > 600 ? 4 : 2;
         final screenHeight = AppDimensions.screenHeight(context);
         final screenWidth = AppDimensions.screenWidth(context);
-        final desiredItemHeight = screenHeight * 0.25;
+        final desiredItemHeight = screenHeight * 0.27;
         final desiredItemWidth = screenWidth / crossAxisCount;
         final childAspectRatio = desiredItemWidth / desiredItemHeight;
 

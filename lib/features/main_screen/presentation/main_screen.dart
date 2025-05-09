@@ -12,6 +12,7 @@ import 'package:cocktail_cosmo_design/features/main_screen/widgets/mix_your_gin_
 import 'package:cocktail_cosmo_design/features/main_screen/widgets/popular_cocktails_day_text.dart';
 import 'package:cocktail_cosmo_design/features/main_screen/widgets/your_cocktail_menutext.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class MainScreen extends StatefulWidget {
   final Function(int) onTabChange;
@@ -36,13 +37,7 @@ class _MainScreenState extends State<MainScreen> {
   final String closeDrawerIcon = AppIcons.closeIcon;
 
   void _activateSearchButton() {
-    Navigator.push(
-      context,
-      PageRouteBuilder(
-        pageBuilder:
-            (context, animation, secondaryAnimation) => CocktailDrawerScreen(),
-      ),
-    );
+    Get.to(() => CocktailDrawerScreen(), transition: Transition.fadeIn);
   }
 
   final List<String> ingredients = [
@@ -109,10 +104,7 @@ class _MainScreenState extends State<MainScreen> {
   // }
 
   void _cocktailDeteilScreen() {
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (_) => const CocktailDeteilScreen()),
-    );
+    Get.to(() => const CocktailDeteilScreen());
   }
 
   @override

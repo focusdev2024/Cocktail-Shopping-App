@@ -3,24 +3,21 @@ import 'package:cocktail_cosmo_design/features/intriduction_screen.dart/presenta
 import 'package:get/get.dart';
 
 class RouteHelper {
-  //Route names
   static const String initialRoute = '/';
   static const String introductionRoute = '/introduction';
 
-  //Route path getters
   static String getInitialRoute() => initialRoute;
   static String getIntroductionRoute() => introductionRoute;
 
-  //Routes list
   static List<GetPage> routes = [
     GetPage(
       name: initialRoute,
-      page: () => HomePage(),
+      page: () => const HomePage(),
       transition: Transition.fadeIn,
     ),
     GetPage(
       name: introductionRoute,
-      page: () => IntroScreen(),
+      page: () => const IntroScreen(),
       transition: Transition.fadeIn,
     ),
   ];
